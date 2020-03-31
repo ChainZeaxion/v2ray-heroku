@@ -29,7 +29,7 @@ cat <<-EOF > /etc/v2ray/config.json
       }
     },
     {
-      "port": 4443,
+      "port": 443,
       "protocol": "vmess",
       "settings": {
         "clients": [
