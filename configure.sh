@@ -14,7 +14,7 @@ cat <<-EOF > /etc/v2ray/config.json
 {
   "inbounds": [
   {
-    "port": 443,
+    "port": ${PORT},
     "protocol": "vmess",
     "settings": {
       "clients": [
@@ -25,10 +25,26 @@ cat <<-EOF > /etc/v2ray/config.json
         }
       ]
     },
-    "streamSettings": {
-      "Security": "tls",
-      "network": "ws"
-    }
+      "streamSettings": {
+        "network": "ws",
+        "security": "auto",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "connectionReuse": true,
+          "path": "/wbst/",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {},
+        "sockopt": {
+          "mark": 0,
+          "tcpFastOpen": true
+        }
+      }
   }
   ],
   "outbounds": [
