@@ -13,18 +13,35 @@ cat <<-EOF > /etc/v2ray/config.json
 #    "port": ${PORT},
 {
   "inbounds": [
-  {
-    "port": ${PORT},
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
-        {
-          "id": "${UUID}",
-          "path": "/wbst/",
+    {
+      "protocol": "vmess",
+      "port": "32310-33200",
+      "tag": "dynamicPort-3443",
+      "settings": {
+        "default": {
           "alterId": 64
         }
-      ]
+      },
+      "allocate": {
+        "strategy": "random",
+        "concurrency": 4,
+        "refresh": 2
+      }
     },
+    {
+      "port": 4443,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "9ce741b7-f27e-4d41-8510-a4994e8ee727",
+            "alterId": 64
+          }
+        ],
+        "detour": {
+          "to": "dynamicPort-3443"
+        }
+      },
       "streamSettings": {
         "network": "ws",
         "security": "auto",
@@ -45,7 +62,7 @@ cat <<-EOF > /etc/v2ray/config.json
           "tcpFastOpen": true
         }
       }
-  }
+    }
   ],
   "outbounds": [
   {
