@@ -10,10 +10,11 @@ rm -rf /v2ray.zip /usr/bin/v2ray/*.sig /usr/bin/v2ray/doc /usr/bin/v2ray/*.json 
 cat <<-EOF > /etc/v2ray/config.json
 
 cat <<-EOF > /etc/v2ray/config.json
+#    "port": ${PORT},
 {
   "inbounds": [
   {
-    "port": ${PORT},
+    "port": 443,
     "protocol": "vmess",
     "settings": {
       "clients": [
