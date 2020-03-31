@@ -19,6 +19,7 @@ cat <<-EOF > /etc/v2ray/config.json
       "clients": [
         {
           "id": "${UUID}",
+          "path": "/wbst/",
           "alterId": 64
         }
       ]
